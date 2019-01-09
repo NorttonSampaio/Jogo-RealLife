@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/11/2018 04:55:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="controller.Catalogo" table="catalogo" catalog="reallife" optimistic-lock="version">
+        <id name="idCatalogo" type="java.lang.Integer">
+            <column name="idCatalogo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="comodo" class="controller.Comodo" fetch="select">
+            <column name="comodo_idComodo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="item" class="controller.Item" fetch="select">
+            <column name="item_idItem" not-null="true" />
+        </many-to-one>
+        <property name="custo" type="double">
+            <column name="custo" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="possui" type="byte">
+            <column name="possui" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

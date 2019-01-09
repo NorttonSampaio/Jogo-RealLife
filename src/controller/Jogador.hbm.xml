@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/11/2018 04:55:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="controller.Jogador" table="jogador" catalog="reallife" optimistic-lock="version">
+        <id name="idJogador" type="java.lang.Integer">
+            <column name="idJogador" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="necessidades" class="controller.Necessidades" fetch="select">
+            <column name="necessidades_idNecessidade" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="45" not-null="true" />
+        </property>
+        <property name="dinheiro" type="double">
+            <column name="dinheiro" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dia" type="int">
+            <column name="dia" not-null="true" />
+        </property>
+        <property name="horario" type="string">
+            <column name="horario" length="5" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

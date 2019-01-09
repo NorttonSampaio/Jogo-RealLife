@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/11/2018 04:55:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="controller.Cidade" table="cidade" catalog="reallife" optimistic-lock="version">
+        <id name="idCidade" type="java.lang.Integer">
+            <column name="idCidade" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="45" not-null="true" />
+        </property>
+        <set name="cidadePodeFazers" table="cidade_pode_fazer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cidade_idCidade" not-null="true" />
+            </key>
+            <one-to-many class="controller.CidadePodeFazer" />
+        </set>
+    </class>
+</hibernate-mapping>

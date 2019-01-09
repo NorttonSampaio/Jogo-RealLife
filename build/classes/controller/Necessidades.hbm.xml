@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/11/2018 04:55:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="controller.Necessidades" table="necessidades" catalog="reallife" optimistic-lock="version">
+        <id name="idNecessidade" type="java.lang.Integer">
+            <column name="idNecessidade" />
+            <generator class="identity" />
+        </id>
+        <property name="inteligencia" type="int">
+            <column name="inteligencia" not-null="true" />
+        </property>
+        <property name="fome" type="byte">
+            <column name="fome" not-null="true" />
+        </property>
+        <property name="sono" type="byte">
+            <column name="sono" not-null="true" />
+        </property>
+        <property name="necessidades" type="byte">
+            <column name="necessidades" not-null="true" />
+        </property>
+        <property name="higiene" type="byte">
+            <column name="higiene" not-null="true" />
+        </property>
+        <property name="social" type="byte">
+            <column name="social" not-null="true" />
+        </property>
+        <property name="diversao" type="byte">
+            <column name="diversao" not-null="true" />
+        </property>
+        <set name="cidadePodeFazers" table="cidade_pode_fazer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="necessidades_idNecessidade" not-null="true" />
+            </key>
+            <one-to-many class="controller.CidadePodeFazer" />
+        </set>
+        <set name="jogadors" table="jogador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="necessidades_idNecessidade" not-null="true" />
+            </key>
+            <one-to-many class="controller.Jogador" />
+        </set>
+        <set name="itemPodeFazers" table="item_pode_fazer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="necessidades_idNecessidade" not-null="true" />
+            </key>
+            <one-to-many class="controller.ItemPodeFazer" />
+        </set>
+    </class>
+</hibernate-mapping>
